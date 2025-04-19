@@ -31,3 +31,22 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hello-kube-ingress
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - host: yazan-k8s-alb-1184491094.us-east-1.elb.amazonaws.com
+        path: /hello-kube
+        pathType: Prefix
+        backend:
+          service:
+            name: hello-kube-svc
+            port:
+              number: 80
