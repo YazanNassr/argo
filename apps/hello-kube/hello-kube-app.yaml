@@ -40,10 +40,10 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - http:
+  - host: yazan-k8s-alb-1184491094.us-east-1.elb.amazonaws.com
+    http:
       paths:
-      - host: yazan-k8s-alb-1184491094.us-east-1.elb.amazonaws.com
-        path: /hello-kube
+      - path: /hello-kube
         pathType: Prefix
         backend:
           service:
